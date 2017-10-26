@@ -1,0 +1,2 @@
+Pillow==3.3.1
+Unidecode==0.04.19
