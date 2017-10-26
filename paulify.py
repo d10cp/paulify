@@ -118,8 +118,7 @@ def main():
     try:
         # Check for text message
         # assert isinstance(sys.argv[1], unicode if PY2 else str)
-        message = sys.argv[1]
-        print type(message)
+        message = unicode(sys.argv[1])
 
         # set message lowercase and remove/replace unknown characters and
         # emojis
@@ -133,7 +132,10 @@ def main():
         elif message_length > 140:
             print 'Sorry, your message had ' + str(message_length) + ' characters and was too long. Please send me a shorter message (up to 140 characters).'
         else:
-            generated_image = 'paul-image.png'
+            if len(sys.argv) > 2:
+                generated_image = sys.argv[2]
+            else:
+                generated_image = 'paul-image.png'
             text_to_image(generated_image, message)
 
     except Exception as e:
